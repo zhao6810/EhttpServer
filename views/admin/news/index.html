@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>系统管理后台</title>
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/metisMenu/metisMenu.min.css" rel="stylesheet">
+ 
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/metisMenu/metisMenu.min.js"></script>
+    <script src="/dist/js/sb-admin-2.js"></script>
+</head>
+<body>
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header text-center">新闻管理</h1>
+	</div>
+</div>
+
+
+<div class="row" style="padding-top:15px;">
+	<div class="col-lg-12">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<strong>新闻管理</strong>
+			</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+                <table width="100%" class="table table-striped table-bordered table-hover table-condensed" style="white-space:nowrap">
+					<thead>
+						<tr>
+							<th>新闻ID</th>
+							<th>新闻标题</th>
+							<th>新闻内容</th>
+							<th>创建时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{news}}
+					</tbody>
+				</table>
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

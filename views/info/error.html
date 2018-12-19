@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+	<style>
+		a:link{
+			color:green;
+			text-decoration:none;
+		}
+		a:hover{
+			color:green;
+			text-decoration:none;
+		}
+		
+		a:visited{
+			color:green;
+			text-decoration:none;
+		}
+		.box{
+			width:300px;
+			line-height:30px;
+			text-align:center;
+			font-family:"Microsoft Yahei";
+		}
+
+		.box .text{
+			font-size:25px; 
+			padding-button:50px;
+		}
+
+
+
+		.pic{
+			text-align:center;
+			margin:0 auto; 
+			padding-top:50px;
+			width:300px; 
+			height:200px;
+			line-height:21px;
+		}
+
+		.pic .img{
+			background:url(/img/sign-error-icon128.png) no-repeat center; 
+			margin:0 auto; 
+			width:128px; 
+			height:128px;
+		}
+		
+		.c-error{
+			color: red;
+		}
+	</style>
+	<script type="text/javascript">     
+		function countDown(secs,surl){        
+		 	var jumpTo = document.getElementById('jumpTo');
+		 	jumpTo.innerHTML=secs;  
+		 	if(--secs>0){     
+			 	setTimeout("countDown("+secs+",'"+surl+"')",1000);     
+			}else{
+				if (surl.length == 0){
+					window.history.go(-1);
+				}else{
+					location.href = surl;
+				}
+			 	-ma
+			}
+		}     
+	</script>
+<title>操作失败</title>
+<style type="text/css">
+ 
+</style>
+</head>
+<body>
+	<div class="pic">
+		<div class="img"></div>
+		    <div class="box">
+				<strong class="text">{{msg}}</strong>
+			</div>
+			<br/>
+			<a href='{{url}}' style='padding-top:20px;color:green;'>页面将在<span id='jumpTo' class='c-error'>3</span>跳转.</a>
+	</div>
+</body>
+<script type="text/javascript">	
+	countDown(3,'{{url}}');
+</script> 
+</html>

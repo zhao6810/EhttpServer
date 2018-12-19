@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{.content}}</title>
+
+<style>
+	body{
+		padding:0; 
+		margin:0; 
+		font:14px/1.5 Microsoft Yahei, 宋体,sans-serif; 
+		color:#555;
+	}
+	.box{
+		margin:0 auto;
+		width:980px;
+	}
+	
+	.box .img{
+		background: url('/static/img/head.png') no-repeat;
+		height:300px;
+	}
+	.box .img .text{
+		float:right;
+		width:430px;
+		height:100px;
+		padding-top:90px;
+		padding-right:90px;
+		font-size:22px;
+	}
+	
+ 
+	.box .img .text .go{
+		color:#139ff8; 
+		font-size:16px; 
+		text-decoration:none;
+	}
+	
+	
+	
+</style>
+</head>
+<body>
+<div class="box">
+      <div class="img">
+      	<div class="text">
+      		<p>{{.code}}错误</p>
+      		<p id="eMsg">{{.content}}</p>
+			<a href="#" class="go" onclick="javascript :history.back(-1);" >返回上一级>></a>
+      	</div>
+      </div>	
+</div>
+
+</body>
+</html>

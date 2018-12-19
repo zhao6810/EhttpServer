@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>管理后台</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/css/supersized.css">
+	<link rel="stylesheet" href="/css/login.css">
+	<link rel="stylesheet" href="/css/layer.css" id="layuicss-layer">
+	<style>
+		.beian{
+			position: absolute;
+			width: 100%;
+			bottom: 10px;
+			text-align: center;
+			padding-bottom: 30px;
+			color:#fff;
+		}
+	</style>
+	</head>
+    <body>
+		<div class="page-container">
+        <h1 style="color:#fff">管理后台</h1>
+        <form method="post" action="/user/login">
+            <input name="user" class="username" value="test123" placeholder="账号" type="text">
+            <input name="pass" class="password" value="1234560" placeholder="密码" type="password">
+            <button type="submit" id="button">立即登录</button>
+        </form>
+    	</div>
+        <div class="beian">
+        	<h2>Copyright © 2017-2018 版权所有</h2>
+        </div>
+ 
+        <script src="/js/jquery.js"></script>
+        <script src="/js/supersized.js"></script>
+        <script src="/js/supersized-init.js"></script>
+        <script src="/js/scripts.js"></script>
+        <script src="/js/layer.js"></script>
+ 
+	</body>
+</html>

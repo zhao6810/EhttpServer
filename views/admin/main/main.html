@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>系统管理后台</title>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/jquery/jquery.qrcode.js"></script>
+    <script src="/jquery/qrcode.js"></script>
+    <script src="/jquery/utf.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/metisMenu/metisMenu.min.js"></script>
+    <script src="/dist/js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="/My97DatePicker/WdatePicker.js"></script>
+
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header text-center">系统信息</h1>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="row show-grid">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-success">
+                    <div class="panel-heading"><i class="fa fa-info-circle fa-fw text-primary"></i> 系统信息</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <i class="glyphicon glyphicon-time text-primary"></i>系统时间：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{YmdHis .data.TIME}}</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fa fa-gears fa-fw text-primary"></i>CPU架构：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{.data.GOARCH}}(<b class="text-danger">{{.data.NUMCPU}}</b>核)</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fa fa-gear fa-fw text-primary"></i>CPU信息：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{.data.CpuName}} <b class="text-danger">{{.data.CpuCores}}</b> cores</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fa fa-windows fa-fw text-primary"></i>服务器名称：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{.data.Systeminfo.Hostname}}</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="glyphicon glyphicon-signal fa-fw text-primary"></i>内存信息：
+                                <span class="pull-right text-muted small"><strong class="text-primary">总计:<b class="text-danger">{{.data.Memory.Total}}</b>MB 空闲:<b class="text-danger">{{.data.Memory.Available}}</b>MB 已用:<b class="text-danger">{{.data.Memory.Used}}</b>MB (<b class="text-danger">{{.data.Memory.UsedPercent}}%</b>)</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fa fa-desktop fa-fw text-warning"></i>服务器类型：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{.data.Systeminfo.OS}}</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="fa fa-linux fa-fw text-success"></i>服务器系统：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{.data.Systeminfo.Platform}}(<b class="text-danger">{{.data.Systeminfo.PlatformVersion}}</b>)</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="glyphicon glyphicon-time text-success"></i>服务器启动时间：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{YmdHis .data.Systeminfo.BootTime}}</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="glyphicon glyphicon-time text-danger"></i>服务器运行时间：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{YmdString .data.Systeminfo.Uptime}}</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="glyphicon glyphicon-time text-success"></i>系统启动时间：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{YmdHis .data.StartUpTime}}</strong>
+                                </span>
+                            </div>
+                            <div class="list-group-item">
+                                <i class="glyphicon glyphicon-time text-danger"></i>系统启动时间：
+                                <span class="pull-right text-muted small"><strong class="text-primary">{{YmdString .data.RunTime}}</strong>
+                                </span>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="row show-grid">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-success">
+                    <div class="panel-heading"><i class="fa fa-info-circle fa-fw text-primary"></i> 磁盘信息</div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                        {{range $index, $val := .data.DISK}}
+                        {{$colver := GetPercentColver $val.UsedPercent}}
+                            <div class="list-group-item">
+                                <i class="glyphicon glyphicon-floppy-disk text-primary"></i>{{$val.Path}} <span class="pull-right text-muted small"><strong class="text-primary">总计:<b class="text-danger">{{$val.Total}}</b>MB 空闲:<b class="text-danger">{{$val.Free}}</b>MB 已用:<b class="text-danger">{{$val.Used}}</b>MB</strong><strong class="text-danger">({{$val.UsedPercent}}%)</strong></span>
+                                <div class="progress">
+                                    <div class="progress-bar {{$colver}}" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{$val.UsedPercent}}%">
+                                        已用{{$val.UsedPercent}}%
+                                    </div>
+                                </div>
+                            </div>
+                        {{end}} 
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
